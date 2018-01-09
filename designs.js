@@ -6,16 +6,16 @@ const tblButton = document.getElementById("make_table");
 const tblCell = document.querySelectorAll("td");
 var defaultColor = "#0000ff";
 
-window.addEventListener("load", startup, false);
+// window.addEventListener("load", startup, false);
 tblButton.addEventListener('click', makeGrid);
-tblCell.addEventListener('click', changeColor(e));
+// tblCell.addEventListener('click', changeColor(e));
 //initialize color picker
-function startup() {
-  colorWell = document.querySelector("#colorPicker");
-  colorWell.value = defaultColor;
-  colorWell.addEventListener("change", updateColor, false);
-  colorWell.select();
-}
+// function startup() {
+//   colorWell = document.querySelector("#colorPicker");
+//   colorWell.value = defaultColor;
+//   colorWell.addEventListener("change", updateColor, false);
+//   colorWell.select();
+// }
 
 function makeGrid() {
     console.log("started");
@@ -40,7 +40,7 @@ function makeGrid() {
     document.body.appendChild(tbl);
 }
 
-updateColor() {
-    let pickedColor = colorWell.value;
-    return pickedColor;
-}
+// updateColor() {
+//     let pickedColor = colorWell.value;
+//     return pickedColor;
+// }
