@@ -3,10 +3,21 @@
 // 2. #sizePicker submit button: set number of rows and column values and create table
 //3. listen for change in color picker, make that the color that number 1 will become.
 const tblButton = document.getElementById("make_table");
+const tblCell = document.querySelectorAll("td");
+var defaultColor = "#0000ff";
+
+window.addEventListener("load", startup, false);
 tblButton.addEventListener('click', makeGrid);
+tblCell.addEventListener('click', changeColor(e));
+//initialize color picker
+function startup() {
+  colorWell = document.querySelector("#colorPicker");
+  colorWell.value = defaultColor;
+  colorWell.addEventListener("change", updateColor, false);
+  colorWell.select();
+}
 
-function makeGrid(event) {
-
+function makeGrid() {
     console.log("started");
     // if table exists, get rid of it
     if (tbl) {
@@ -27,4 +38,9 @@ function makeGrid(event) {
     }
     tbl.appendChild(tblBody);
     document.body.appendChild(tbl);
+}
+
+updateColor() {
+    let pickedColor = colorWell.value;
+    return pickedColor;
 }
