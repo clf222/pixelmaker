@@ -6,6 +6,7 @@ const tblButton = document.getElementById("make_table");
 const tblCell = document.querySelectorAll("td");
 var defaultColor = "#0000ff";
 
+
 // window.addEventListener("load", startup, false);
 tblButton.addEventListener('click', makeGrid);
 // tblCell.addEventListener('click', changeColor(e));
@@ -17,21 +18,22 @@ tblButton.addEventListener('click', makeGrid);
 //   colorWell.select();
 // }
 
-function makeGrid() {
+function makeGrid(e) {
+    e.preventDefault();
     console.log("started");
     // if table exists, get rid of it
-    if (tbl) {
+    if (tbl !="") {
         document.body.removeChild(tbl);
     }
     let rows = document.getElementById("sizePicker").elements["input_height"].value;
     let columns = document.getElementById("input_width").value;
     console.log("Rows: "+rows+ "columns: "+ columns);
-    const tbl = document.createElement("table");
-    const tblBody = document.createElement("tbody");
+    let tbl = document.createElement("table");
+    let tblBody = document.createElement("tbody");
     for (let i=0; i<rows; i++) {
-        let row =createElement("tr");
+        let row =document.createElement("tr");
         for (let j=0; j<columns; j++) {
-            let cell = createElement("td");
+            let cell = document.createElement("td");
             row.appendChild(cell);
         }
         tblBody.appendChild(row);
