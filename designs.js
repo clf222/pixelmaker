@@ -3,7 +3,7 @@
 // 2. #sizePicker submit button: set number of rows and column values and create table
 //3. listen for change in color picker, make that the color that number 1 will become.
 const tblButton = document.getElementById("make_table");
-const tblCell = document.querySelectorAll("td");
+let tblCell = document.querySelectorAll("td");
 var defaultColor = "#0000ff";
 var tbl;
 
@@ -49,5 +49,5 @@ function updateColor() {
 
 function changeColor() {
     let pickedColor = colorWell.value;
-    tblCell.style.color = pickedColor;
+    this.style.backgroundColor = pickedColor;
 }
