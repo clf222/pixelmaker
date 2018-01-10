@@ -5,30 +5,30 @@
 const tblButton = document.getElementById("make_table");
 const tblCell = document.querySelectorAll("td");
 var defaultColor = "#0000ff";
+var tbl;
 
 
-// window.addEventListener("load", startup, false);
+window.addEventListener("load", startup, false);
 tblButton.addEventListener('click', makeGrid);
-// tblCell.addEventListener('click', changeColor(e));
+tblCell.addEventListener('click', changeColor, false);
 //initialize color picker
-// function startup() {
-//   colorWell = document.querySelector("#colorPicker");
-//   colorWell.value = defaultColor;
-//   colorWell.addEventListener("change", updateColor, false);
-//   colorWell.select();
-// }
-
+function startup() {
+  colorWell = document.querySelector("#colorPicker");
+  colorWell.value = defaultColor;
+  colorWell.addEventListener("change", updateColor, false);
+  colorWell.select();
+}
+//build table
 function makeGrid(e) {
     e.preventDefault();
-    console.log("started");
     // if table exists, get rid of it
-    if (tbl !="") {
+    if (tbl) {
         document.body.removeChild(tbl);
     }
+    //build the table
     let rows = document.getElementById("sizePicker").elements["input_height"].value;
     let columns = document.getElementById("input_width").value;
-    console.log("Rows: "+rows+ "columns: "+ columns);
-    let tbl = document.createElement("table");
+    tbl = document.createElement("table");
     let tblBody = document.createElement("tbody");
     for (let i=0; i<rows; i++) {
         let row =document.createElement("tr");
@@ -42,7 +42,12 @@ function makeGrid(e) {
     document.body.appendChild(tbl);
 }
 
-// updateColor() {
-//     let pickedColor = colorWell.value;
-//     return pickedColor;
-// }
+function updateColor() {
+    let pickedColor = colorWell.value;
+    console.log(pickedColor);
+}
+
+function changeColor() {
+    let pickedColor = colorWell.value;
+    tblCell.style.color = pickedColor;
+}
